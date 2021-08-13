@@ -2,9 +2,31 @@ class UI{
     constructor(){
         this.profileContainer = document.querySelector('.profileContainer');
         this.alert = document.querySelector('#alert');
+        this.todo = document.querySelector('#todo');
+    }
+
+    showToDo(todo){
+        let html = `<div class="card p-0 m-0">
+                        <div class="card-body m-0">
+                        <h3>To Do List</h3>
+                        <ul class="list-group">`;
+        todo.forEach(item => {
+            
+            if(item.completed){
+                html+=`<li class="list-group-item">${item.title}</li>`;
+            }else{
+                html+=`<li class="list-group-item bg-warning">${item.title}</li>`;
+            }
+        });
+
+        html+=`</ul>
+            </div>
+            </div>`;
+        this.todo.innerHTML = html;
     }
 
     showProfile(profile){
+
         let html = `
         <div class="card p-3">
             <div class="row">
@@ -34,9 +56,8 @@ class UI{
                 </div>
             </div>
         </div>`;
-
+        
         this.profileContainer.innerHTML = html;
-
     }
 
     showText(text){

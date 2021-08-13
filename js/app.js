@@ -13,6 +13,7 @@ search.addEventListener('keyup',function(e){
             if(res.profile.length!=0){
                 ui.showProfile(res.profile[0]);
                 ui.hideText();
+                ui.showToDo(res.todo);
             }else{
                 ui.showText(text);
             }

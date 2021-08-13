@@ -6,13 +6,19 @@ class Profile{
     }
 
     async getProfile(username){
-        let user = capitalize(username);
+        let user = this.capitalize(username);
+        let todo = null;
+        
         const profileResponse = await fetch(`https://jsonplaceholder.typicode.com/users?username=${user}`);
-
         const profile = await profileResponse.json();
 
+        if(profile.length>0){
+        let id =  profile[0].id;
+        const todoResponse = await fetch(`https://jsonplaceholder.typicode.com/todos?userId=${id}`);
+        todo = await todoResponse.json();        
+        }
         return{
-            profile:profile
+            profile,todo
         }
     }
     
