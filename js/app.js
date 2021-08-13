@@ -17,6 +17,8 @@ search.addEventListener('keyup',function(e){
             }else{
                 ui.showText(text);
             }
+        }).catch(err=>{
+            ui.showText(err);
         });
     }
 })
